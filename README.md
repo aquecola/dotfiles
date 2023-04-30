@@ -1,1 +1,1 @@
-# dotfiles
+# sway dotfiles
