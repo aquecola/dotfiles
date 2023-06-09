@@ -9,17 +9,24 @@
 }
 
 window {
-    color:      rgba(217, 216, 216, 1);
-    background: rgb(40, 40, 40);
+    color:      rgba(245, 246, 247, 1);
+    background: rgba(40, 40, 40, 1);
 }
 
 window#waybar.solo {
-    color:      rgba(217, 216, 216, 1);
-    background: rgb(20, 20, 20);
+    color:      rgba(245, 246, 247, 1);
+    background: rgb(40, 40, 40);
 }
 
 #workspaces {
-    margin: 0 5px;
+    margin:     5px 0px 5px 15px;
+    padding: 	0px 4px;
+    min-width:  0px;
+    min-height: 0px;
+    background: rgb(20,20,20);
+    border: none;
+    border-radius: 5;
+    opacity: 0.9;
 }
 
 #workspaces button {
@@ -43,45 +50,28 @@ window#waybar.solo {
 
 
 #clock {
-    margin:     0px 5px 0px 5px;
-    min-width:  10px;
-}
-
-#battery{
-    margin:     0px 5px 0px 0px;
-    min-width:  10px;
-
-}
-
-#language{
-    margin:     0px 15px 0px 15px;
-    min-width:  20px;
-
-}
-
-#backlight{
-margin:     0px 5px 0px 5px;
-min-width:  20px;
-
-}
-
-#pulseaudio{
-    margin:     0px 15px 0px 5px;
-    min-width:  20px;
-
-}
-
-#weather {
-    margin:     0px 15px 0px 0px;
-    min-width:  20px;
-
-}
-
-#network{
-    margin:     0px 0px 0px 0px;
+    margin:     5px 16px 5px 5px;
+    padding: 	0px 5px;
     min-width:  0px;
+    min-height: 0px;
+    background: rgb(20,20,20);
+    border: none;
+    border-radius: 5;
+    opacity: 0.9;
+}
+
+#battery, #pulseaudio, #network, #backlight, #language, #custom-weather, #temperature, #custom-spotify, #custom-power, #cpu, #memory, #window{
+    margin:     5px 0px 5px 5px;
+    padding: 	0px 5px;
+    min-width:  0px;
+    min-height: 0px;
+    background: rgb(20,20,20);
+    border: none;
+    border-radius: 5;
+    opacity: 0.9;
 
 }
+
 
 #tray{
     margin:     0px 16px 0px 10px;

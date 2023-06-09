@@ -1,43 +1,42 @@
 {
-//СЛОЙ НА КОТОРОМ БУДЕН НАХОДИТСЯ WAYBAR. ПО ДЕФОЛТУ НА САМОМ ВЕРХНЕМ:
-    // "layer": "top",
 
-//ПОЛОЖЕНИЕ ПАНЕЛИ НА ЭКРАНЕ TOP, BOTTOM, LEFT, RIGHT:
 "position": "top",
 
-//ВЫСОТА ПАНЕЛИ:
+
     "height": 29,
 
-//ШИРИНА ПАНЕЛИ:
+
     "width": 1920,
 
-//МОДУЛИ СЛЕВА, ПО ЦЕНТРУ, СПРАВА:
+
     "modules-left": [
 "sway/workspaces",
+"custom/spotify",
+"pulseaudio"
     ],
 
     "modules-center": [
-"custom/cmus",
-"custom/spotify",
-"pulseaudio"
+"sway/language",
+"sway/window",
+"custom/weather"
+
     ],
 
     "modules-right": [
 "network",
 "backlight",
 "battery",
+"temperature",
+"cpu",
+"memory",
 "clock"
     ],
 
-//НАСТРОЙКА МОДУЛЯ ВОРКСПЕЙСОВ:
+
       "sway/workspaces": {
-	//ПРОКРУТКА КОЛЕСОМ МЫШИ:
           "disable-scroll": false,
-	//КАКАЯ ТО ХРЕНЬ ДЛЯ НЕСКОЛЬКИХ ПАНЕЛЕЙ:
           "all-outputs": true,
-	//ЧТО БУДЕТ ОТОБРАЖАТЬСЯ В НАЗАВАНИИ, ИКОНКА КАК НИЖЕ ИЛИ ИМЯ {name}:
           "format": "{icon}", 
-	//СОБСТВЕННО НАСТРОЙКИ ИКОНОК ДЛЯ ВОРКСПЕЙСОВ:
           "format-icons": {
               "1": "",
               "2": "",
@@ -53,31 +52,41 @@
       },
 
 
-//НАСТРОЙКА ПОВЕДЕНИЯ КНОПОК ПЕРЕКЛЮЧЕНИЯ ВОРКСПЕЙСОМ, ТРОГАТЬ ТОЛЬКО ЕСЛИ ДОФИГА УМНЫЙ:
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
 
 
-//ТРЕЙ, РАЗМЕР ИКОНОК И РАСТОЯНИЕ МЕЖДУ НИМИ:
     "tray": {
-        // "icon-size": 50,
         "spacing": 10
     },
 
 
-//ЧАСЫ, ВРЕМЕННАЯ ЗОНА, ФОРМАТ ОТОБРАЖЕНИЯ И ФОРМАТ ОТОБРАЖЕНИЯ ПОСЛЕ НАЖАТИЯ ЛКМ:
     "clock": {
-        // "timezone": "America/New_York",
-        "format": " {:%H:%M}"
-        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-        //"format-alt": "{:%Y-%m-%d}"
+        "format": " {:%a %d %b %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
     },
 
 
-//РАСКЛАДКА КЛАВИАТУРЫ:
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+
+    "memory": {
+        "format": "{}% "
+    },
+
 	"sway/language": {
-		"format": "  {}",
+		"format": " {}",
 		"tooltip": false
 	},
 
@@ -95,12 +104,15 @@
         "return-type": "json",
         "exec": "~/.config/waybar/modules/spotify.sh",
         "exec-if": "pgrep spotify",
-        "escape": true
+        "escape": true,
+        "max-length": 32,
+		"min-length": 32
+        
     },
 
     "network": {
-        "format": "{essid} {icon}",
-        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format": "{icon}",
+        "format-alt": "{essid} {icon}",
         "format-alt-click": "click",
         "format-icons": {
             "wifi": ["", "" ,""],
@@ -110,10 +122,10 @@
     },
 
     "battery": {
-        "format": "{icon} {capacity}%",
+        "format": "{icon}",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""],
-        "format-charging": "{capacity}% ",
+        "format-charging": "",
         "format-full":"{icon}",
 
         "format-alt-click": "click",
@@ -134,9 +146,14 @@
         "exec-if": "ping wttr.in -c1"
         },
 
-//ВЫВОД УРОВНЯ ГРОМКОСТИ С ПУЛЬСАУДИО, КОЛИЧЕСТВО ПРОЦЕНТОВ ПРИ СКРОЛЛЕ, ФОРМАТЫ ВЫВОДА И ЧТО ЗАПУСТИТЬ ПРИ КЛИКЕ ЛКМ:
+    "sway/window": {
+        "format": "{}",
+		"max-length": 30,
+		"min-length": 30,
+		"tooltip": false
+	},
+
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{icon}",
         "format-bluetooth": " {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -155,7 +172,6 @@
         "on-click": "pavucontrol"
     },
 
-//ТАСКБАР, ФОРМАТ, РАЗМЕР ИКОНОК, ТЕМА, ПОДЗКАЗКА...:
 "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 14,
@@ -165,19 +181,6 @@
     "on-click-middle": "close"
 },
 
-//ПОДКЛЮЧЕНИЕ ДОПОЛНИТЕЛЬНЫХ МОДУЛЕЙ, ПРЕЖДЕ ЧЕМ ЧТО-ТО ГОРОДИТЬ ПОМОТРИ КАКИЕ ЕСТЬ ТУТ: https://github.com/Alexays/Waybar/wiki/Module:-Custom
-    "custom/cmus": {
-        "format": "  {}",
-        //"max-length": 15,
-        "interval": 10,
-        "exec": "cmus-remote -C \"format_print '%a - %t'\"", // artist - title
-        "exec-if": "pgrep cmus",
-        "on-click": "cmus-remote -u",                        //toggle pause
-        "escape": true                                       //handle markup entities
-    }, //НА ВИКИ В МОДУЛЯХ НЕТ В МОДУЛЯХ ВОТ ЭТОЙ ЗАПЯТОЙ В КОНЦЕ, ЕСЛИ ЕЕ ТЕ БУДЕТ ТО WAYBAR НЕ ВЗЛЕТИТ!
-
-//ЧТО ТО НА ТЕХНИЧЕСКОМ, НЕ ТРОГАЙ ЭТО!
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
     }
