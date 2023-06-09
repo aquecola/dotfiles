@@ -1,8 +1,7 @@
 # Overview
 
-![image](![image](https://github.com/aquecola/dotfiles/assets/81821381/e5c6abf9-ca6a-4885-911c-063c6b37c228)
-)
+![image](https://github.com/aquecola/dotfiles/assets/81821381/46dc74bb-9fa7-40d7-a54e-c24fb1784172)
 # ---
-![image](![image](https://github.com/aquecola/dotfiles/assets/81821381/d19a221a-a333-432b-9a2b-d48dbea3e158)
+![image](https://github.com/aquecola/dotfiles/assets/81821381/c29c18b5-2451-4724-a7a4-453f3ed7c77e)
 )
 
