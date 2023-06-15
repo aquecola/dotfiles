@@ -105,10 +105,11 @@
         "exec": "~/.config/waybar/modules/spotify.sh",
         "exec-if": "pgrep spotify",
         "escape": true,
-        "max-length": 32,
+        "max-length": 50,
 		"min-length": 32
         
     },
+
 
     "network": {
         "format": "{icon}",

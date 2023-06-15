@@ -10,12 +10,12 @@
 
 window {
     color:      rgba(245, 246, 247, 1);
-    background: rgba(40, 40, 40, 1);
+    background: rgba(44, 44, 44, 1);
 }
 
 window#waybar.solo {
     color:      rgba(245, 246, 247, 1);
-    background: rgb(40, 40, 40);
+    background: rgb(44, 44, 44);
 }
 
 #workspaces {
@@ -60,7 +60,7 @@ window#waybar.solo {
     opacity: 0.9;
 }
 
-#battery, #pulseaudio, #network, #backlight, #language, #custom-weather, #temperature, #custom-spotify, #custom-power, #cpu, #memory, #window{
+#battery, #pulseaudio, #network, #backlight, #language, #custom-weather, #temperature, #custom-spotify, #custom-youtube_music #custom-power, #cpu, #memory, #window{
     margin:     5px 0px 5px 5px;
     padding: 	0px 5px;
     min-width:  0px;

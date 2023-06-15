@@ -36,10 +36,9 @@ output * bg ~/wallpaper/wallpaper.png fill
 # Example configuration:
 #
 #exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+#          timeout 300 'sway-lock.sh' \
+#          before-sleep 'sway-lock.sh'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -273,12 +272,12 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec_always autotiling -w 1 2 3 4 5 6 7 8 9 10
 
 exec firefox
-exec code
 exec spotify
 exec thunderbird
 exec armcord
 exec telegram-desktop
 exec whatsie
+
 
 assign [class="firefox"] workspace 1
 assign [class="Code"] workspace 2
@@ -293,8 +292,14 @@ assign [class="thunderbird"] workspace 6
 for_window [app_id="nautilus"] border none
 for_window [class="firefox"] border none
 for_window [class="Code"] border none
+for_window [class="Code"] opacity 0.9
 for_window [class="balena-etcher"] border none
 for_window [class="ArmCord"] border none
+for_window [class="ArmCord"] opacity 0.9
+for_window [app_id="org.telegram.desktop"] opacity 0.9
+for_window [app_id="com.ktechpit.whatsie"] opacity 0.9
+for_window [class="Spotify"] opacity 0.9
+for_window [class="thunderbird"] opacity 0.9
 
 # Brightness controls
 
